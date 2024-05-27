@@ -32,8 +32,8 @@ header {
 .div_logo{
     display: flex;
     width: 110%;
-    height: 300%;
-    transform: translateX(-40%);
+    height: 110%;
+    transform: translateX(-20%);
 }
 
 header h1 {
@@ -80,7 +80,8 @@ header nav a {
 .inicio {
     display: flex;
     height: 100vh;
-    background: linear-gradient(to top, #D2E2FB 30%, #86A8DB);
+  /* background: linear-gradient(to top, #D2E2FB 30%, #86A8DB); */
+    background-color: #2D2926;
     position: relative;
     overflow: hidden;
 }
@@ -91,6 +92,7 @@ header nav a {
     width: 100%;
     pointer-events: none;
     background-attachment: fixed;
+    border-radius: 100%;
 }
 
 .inicio .logo_centro {
@@ -101,25 +103,27 @@ header nav a {
     color: white;
     font-size: 80px;
     text-shadow: 0px 0px 4px rgba(0, 0, 0, 0.25);
+    width: 30%;
+    height: 30%;
 }
- 
+
 .cortina1 img{
-    transform: translate(-65%, 4%);
+    transform: translate(-70%, 4%);
     width: 149vw;
     height: 121vh;
-  
+    border-radius: 180px;
 }
 
 .cortina2 img{
     width: 130vw;
     height: 120vh;
-    transform: translate(40%, 3.5%);
+    transform: translate(45.5%, 3.5%);
   
 }
 
 .servico {
     padding: 50px;
-    background-color: rgb(53, 39, 39);
+    background-color: #2D2926;
     color: white;
     position: relative;
     z-index: 100;
