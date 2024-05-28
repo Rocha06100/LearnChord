@@ -1,6 +1,6 @@
-const logo_centro = document.querySelector('.logo_centro')
-const cortina_direita = document.querySelector('.cortina_direita')
-const cortina_esquerda = document.querySelector('.cortina_esquerda')
+const logo_centro = document.getElementById('logo_centro')
+const cortina_direita = document.getElementById('cortina_direita')
+const cortina_esquerda = document.getElementById('cortina_esquerda')
 
 document.addEventListener('scroll', function() {
     let value = window.scrollY

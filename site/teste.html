@@ -1,77 +1,100 @@
 <!DOCTYPE html>
-<html lang="pt">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Scroll Suave</title>
-    <style>
-        /* Estilo para ativar a rolagem suave */
-        html {
-            scroll-behavior: smooth;
-        }
-
-        /* Estilo para a página de exemplo */
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-        }
-
-        nav {
-            position: fixed;
-            top: 0;
-            width: 100%;
-            background-color: #333;
-            color: white;
-            padding: 10px;
-            text-align: center;
-        }
-
-        nav a {
-            color: white;
-            margin: 0 15px;
-            text-decoration: none;
-        }
-
-        section {
-            height: 100vh;
-            padding: 50px;
-            box-sizing: border-box;
-        }
-
-        .section1 {
-            background-color: #f4f4f4;
-        }
-
-        .section2 {
-            background-color: #ddd;
-        }
-
-        .section3 {
-            background-color: #bbb;
-        }
-    </style>
+    <title>Document</title>
 </head>
 <body>
-    <nav>
-        <a href="#section1">Seção 1</a>
-        <a href="#section2">Seção 2</a>
-        <a href="#section3">Seção 3</a>
-    </nav>
+    <div class="div_mae">
+        <nav>
 
-    <section id="section1" class="section1">
-        <h1>Seção 1</h1>
-        <p>Conteúdo da Seção 1</p>
-    </section>
+        </nav>
+        <div>
+        <center>
+            <div class="input">
+            <h3>Nome</h3>
+            <input type="text" placeholder="" id="input_nome">
+            <div id="erro_nome" class="erro"></div>
+            </div>
 
-    <section id="section2" class="section2">
-        <h1>Seção 2</h1>
-        <p>Conteúdo da Seção 2</p>
-    </section>
+            
+            <div class="input">
+                <h3>email</h3>
+                <input type="text" placeholder="" id="input_email">
+            </div>
+            <div id="erro_email" class="erro"></div>
+            
+            <div class="input">
+                <h3>Senha</h3>
+                <input type="text" placeholder="" id="input_senha">
+            </div>
+            <div id="erro_senha" class="erro"></div>
 
-    <section id="section3" class="section3">
-        <h1>Seção 3</h1>
-        <p>Conteúdo da Seção 3</p>
-    </section>
+            <div class="input">
+                <h3>Repita a senha</h3>
+                <input type="text" placeholder="" id="input_repitir_senha">
+                </div>
+                <div id="erro_repitir_senha" class="erro"></div>
+
+                <button id="cadastrar">Cadastrar</button>       
+            </center>
+            </div>
+        </div>
 </body>
 </html>
+<script>
+    function cadastrar() {
+        const nome = document.getElementById('input_nome').value;
+        const email = document.getElementById('input_email').value;
+        const senha = document.getElementById('input_senha').value;
+        const rptSenha = document.getElementById('input_repitir_senha').value;
+        let validacao = false
+        let numero = false;
+                
+        erro_nome.innerHTML = "";
+        erro_email.innerHTML = "";
+        erro_senha.innerHTML = "";
+        erro_repitir_senha.innerHTML = "";
+
+        if (nome === "") {
+            erro_nome.innerHTML = `Preencha este campo.`;
+        }
+
+        if (email === "") {
+            erro_email.innerHTML = `Preencha este campo.`;
+        } else if (email.indexOf('@') < 0 || email.indexOf('.') < 0) {
+            erro_email.innerHTML = "Email inválido.";
+        }
+
+        if (senha === "") {
+            erro_senha.innerHTML = `Preencha este campo.`;
+        } else {
+            for (let i = 0; i <= 9; i++) {
+                if (senha.indexOf(i.toString()) >= 0) {
+                    numero = true;
+                    break;
+                }
+            }
+            
+            // Verifica os requisitos da senha
+            if (senha.length < 6 || !numero || (senha.indexOf('@') < 0 && senha.indexOf('#') < 0)) {
+                erro_senha.innerHTML = `
+                <p>A senha deve conter:</p>
+                <p>No mínimo 6 caracteres,</p>
+                <p>No mínimo um número,</p>
+                <p>Um caractere especial (@ ou #).</p>`;
+            }
+        }
+
+        if (rptSenha === "") {
+            erro_repitir_senha.innerHTML = `Preencha este campo.`;
+        } else if (rptSenha !== senha) {
+            erro_repitir_senha.innerHTML = "As senhas estão diferentes.";
+        }else{
+            window.location.href = 'paginaInicial.html';
+        }
+    }
+
+    document.getElementById('cadastrar').addEventListener('click', cadastrar);
+</script>
