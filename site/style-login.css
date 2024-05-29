@@ -1,0 +1,183 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+body {
+    background-color: #1a1a1a;
+}
+.mae {
+    width: 100%;
+    height: 100%;
+}
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 200px;
+    padding: 0 5%;
+    position: fixed;
+    width: 100%;
+    z-index: 100;    
+}
+.div_logo {
+    display: flex;
+    width: 110%;
+    height: 110%;
+    transform: translateX(-20%);
+}
+header h1 {
+    font-size: 40px;
+    color: white;
+}
+header nav {
+    display: flex;
+    gap: 30px;
+}
+header nav a {
+    text-decoration: none;
+    font-size: 20px;
+    font-weight: 600;
+    padding: 8px 16px;
+    border-radius: 99px;
+    transition: 0.3s;
+    color: rgb(255, 255, 255);
+}
+.hover_button {
+    display: flex;
+    width: 130px;
+    height: 45px;
+    justify-content: space-around;
+}
+.sm {
+    display: flex;
+    width: 170px;
+    height: 45px;
+    flex-direction: wrap;    
+}
+.hover_button a.ativo {
+    background: #5247B9;
+}
+.hover_button a:hover {
+    background: #5247B9;
+}
+.hover_button a:hover > a:not(:hover) {
+    background: none;
+}
+.imagem_centro {
+    width: 100%;
+    height: 100%;
+}
+.centro {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    width: 80vw;
+    height: 80vh;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -40%);
+    background-color: aliceblue;
+    border: 2px solid #5247B9; /* Define a borda com cor e espessura */
+    border-radius: 10px; /* Define bordas arredondadas */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Adiciona sombra */
+}
+.imagem {
+    width: 100%;
+    height: 100%;
+    background-image: url('logos/logo_branca.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+    z-index: 1;
+}
+.inputs {
+    width: 70%;
+    height: 60%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
+    z-index: 2; /* Coloque a frente da imagem */
+}
+.input_email {
+    transform: translateY(-45px);
+}
+.input-form {
+    position: relative;
+    font-family: Arial, Helvetica, sans-serif;
+}
+.input {
+    border: solid 1.9px #9e9e9e;
+    border-radius: 1.3rem;
+    background: none;
+    padding: 1rem;
+    font-size: 1rem;
+    color: #000000;
+    transition: border 150ms cubic-bezier(0.4,0,0.2,1);
+}
+.textUser {
+    position: absolute;
+    left: 15px;
+    color: #666666;
+    pointer-events: none;
+    transform: translateY(1rem);
+    transition: 150ms cubic-bezier(0.4,0,0.2,1);
+}
+.input:focus, input:valid {
+    outline: none;
+    box-shadow: 1px 2px 5px rgba(133, 133, 133, 0.523);
+    background-image: linear-gradient(to top, rgba(182, 182, 182, 0.199), rgba(252, 252, 252, 0));
+    transition: background 4s ease-in-out;
+}
+.input:focus ~ label, input:valid ~ label {
+    transform: translateY(-95%) scale(0.9);
+    padding: 0 .2em;
+    color: #000000be;
+    left: 80px;
+}
+.input:hover {
+    border: solid 1.9px #000002;
+    transform: scale(1.03);
+    box-shadow: 1px 1px 5px rgba(133, 133, 133, 0.523);
+    transition: border-color 1s ease-in-out;
+}
+.boton-elegante {
+    padding: 15px 30px;
+    border: 2px solid #2c2c2c;
+    background-color: #1a1a1a;
+    color: #ffffff;
+    font-size: 1.2rem;
+    cursor: pointer;
+    border-radius: 30px;
+    transition: all 0.4s ease;
+    outline: none;
+    position: relative;
+    overflow: hidden;
+    font-weight: bold;
+}
+.boton-elegante::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(
+        circle,
+        rgba(255, 255, 255, 0.25) 0%,
+        rgba(255, 255, 255, 0) 70%
+    );
+    transform: scale(0);
+    transition: transform 0.5s ease;
+}
+.boton-elegante:hover::after {
+    transform: scale(4);
+}
+.boton-elegante:hover {
+    border-color: #666666;
+    background: #292929;
+}

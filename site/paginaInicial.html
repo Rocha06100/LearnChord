@@ -27,11 +27,11 @@
             <a href="#">Contato</a>
         </div>    
         <div class="hover_button">
-            <a href="teste.html">Entrar</a>
+            <a href="login.html">Entrar</a>
         </div>    
         </nav>
     </header>
-
+    
     <section class="inicio">
         <div class="img_centro">
         <img src="logos\logo.png" class="logo_centro" id="logo_centro">
@@ -42,9 +42,7 @@
         <div class="cortina2">
         <img src="logos\cortina_esquerda.png" class="cortina_direita" id="cortina_direita">
         </div>
-        
     </section>
-
 <div  class="texto">
     <section id="servico" class="servico">
         <h1>Parallax</h1>
@@ -56,7 +54,23 @@
         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Deserunt saepe dolorem consectetur architecto officiis. Unde, at. Magnam sed aliquid nesciunt error sint repudiandae ad. Reiciendis minus, esse eos soluta mollitia quia est! Inventore aliquid ut hic fuga ratione consectetur ea? Ratione tempore, ab dolor, assumenda neque doloremque voluptate nesciunt eaque, illo ipsa quia. Nihil dolor libero animi quibusdam recusandae et cumque deleniti minima unde iste sint possimus numquam nam, corporis cupiditate? Maxime voluptate atque alias consequuntur tenetur non quia amet, eligendi libero odio adipisci aperiam dolore perferendis illum vero, nam temporibus numquam cumque, neque fuga iste? Totam cum modi excepturi!</p>
     </section>
 </div>
-    <script src="script.js"></script>
 </div>
 </body>
 </html>
+
+<script>
+
+const logo_centro = document.getElementById('logo_centro')
+const cortina_direita = document.getElementById('cortina_direita')
+const cortina_esquerda = document.getElementById('cortina_esquerda')
+
+document.addEventListener('scroll', function() {
+    let value = window.scrollY
+    logo_centro.style.marginTop = value * 1.1 + 'px'
+
+    cortina_direita.style.marginLeft = -value *1.4 + 'px'
+    cortina_esquerda.style.marginLeft = +value *1.2 + 'px'
+
+})
+
+</script>
