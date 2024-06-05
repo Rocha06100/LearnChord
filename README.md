@@ -1,17 +1,5 @@
-# Legend Guitar
-
-<hr>
-
-# Como usar
-
-
-
-
-
-
-
 <div align="center">
-<img src="public\logos\logo.png" width="350em">
+<img src="logos\logo.png" width="350em">
 </div>
 
 <br>
