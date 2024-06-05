@@ -50,3 +50,4 @@ npm start
 ```
 
 ### Por fim, para abrir o projeto
+- Acesse a seguinte URL: http://localhost:3333
