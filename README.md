@@ -8,7 +8,7 @@ Um projeto totalmente focado na historia da gitarra, um instrumento de extrema i
 
 <br>
 
-## 🚀 Tecnologias utilizadas
+## Tecnologias utilizadas
 
 ### Front-end:
 
@@ -29,7 +29,7 @@ Um projeto totalmente focado na historia da gitarra, um instrumento de extrema i
 
 <br>
 
-## ⚙ Instalação local
+## Instalação local
 
 ### Requisitos para a instalação:
 ![NodeJS](https://img.shields.io/badge/node.js-6DA55F?style=for-the-badge&logo=node.js&logoColor=white)
