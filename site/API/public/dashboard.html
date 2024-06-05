@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style_dashboard.css">
+    <title>Document</title>
+</head>
+<body>
+    <header>
+        <div class="div_logo">
+            <img src="logos/logo.png" alt="Logo">
+        </div>
+        <nav>
+            <div class="hover_button">
+                <a href="index.html">Sair</a>
+            </div>
+
+            <div class="hover_button">
+                <a href="dashboard.html" class="ativo">Dashboard</a>
+            </div>
+
+            <div class="hover_button">
+                <a href="quiz.html">Quiz</a>
+            </div>
+        
+        </nav>
+    </header>
+
+    <div class="grafico">
+        <canvas id="myChart"></canvas>
+        
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+        
+        <script>
+          const ctx = document.getElementById('myChart');
+      
+        new Chart(ctx, {
+          type: 'bar',
+          data: {
+            labels: ['Fáceis', 'Médias', 'difíceis'],
+            datasets: [{
+              label: '# of Votes',
+              data: ['7', '6', '5'],
+              borderWidth: 1
+            }]
+          },
+          options: {
+            scales: {
+              y: {
+                beginAtZero: true
+              }
+            }
+          }
+        });
+      </script>
+</div>
+
+</body>
+</html>
+
+<script>
+ const pieChart = document.getElementById("pieChart");
+    let star1 = 0;
+    let star2 = 0;
+    let star3 = 0;
+    let star4 = 0;
+    let star5 = 0;
+
+
+    function generatePieChart(star1, star2, star3, star4, star5) {
+        console.log(star1)
+        console.log(star2)
+        console.log(star3)
+        console.log(star4)
+        console.log(star5)
+        Chart.defaults.font.size = 10;
+        Chart.defaults.color = "#ffffff";
+
+
+        const data = {
+            labels: [
+                '1 ★',
+                '2 ★',
+                '3 ★',
+                '4 ★',
+                '5 ★'
+            ],
+            datasets: [{
+                label: 'Porcentagem',
+                data: [star1, star2, star3, star4, star5],
+                backgroundColor: [
+                    '#AE6427',
+                    '#303030',
+                    '#FFCC00',
+                    '#D70000',
+                    '#4B97D2'
+                ],
+                hoverOffset: 4
+            }]
+        };
+
+        const config = {
+            type: 'doughnut',
+            data: data,
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins:{
+                legend:{
+                    labels:{
+                       boxWidth: 15,
+                       boxHeight: 15,
+                    }
+                }
+            }
+            }
+        };
+
+        new Chart(pieChart, config);
+    }
+
+    function capturarEstrelas() {
+        console.log(star1)
+        console.log(star2)
+        console.log(star3)
+        console.log(star4)
+        console.log(star5)
+        fetch(`/usuarios/capturarEstrelas`)
+            .then(resposta => {
+                console.log(star1)
+                resposta.json().then(res => {
+                    console.log(star1)
+                    console.log(star2)
+                    console.log(star3)
+                    console.log(star4)
+                    console.log(star5)
+                    if (res.length > 0) {
+                        let total = Number(res[0].star1) + Number(res[0].star2) + Number(res[0].star3) + Number(res[0].star4) + Number(res[0].star5);
+
+                        let pctStar1 = ((res[0].star1 * 100) / total).toFixed(1);
+                        let pctStar2 = ((res[0].star2 * 100) / total).toFixed(1);
+                        let pctStar3 = ((res[0].star3 * 100) / total).toFixed(1);
+                        let pctStar4 = ((res[0].star4 * 100) / total).toFixed(1);
+                        let pctStar5 = ((res[0].star5 * 100) / total).toFixed(1);
+
+                        generatePieChart(pctStar1, pctStar2, pctStar3, pctStar4, pctStar5);
+                    }
+                });
+            });
+    }
+
+</script>

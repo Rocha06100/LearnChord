@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style_quiz.css">
+    <!--Sweetalert2-->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.11.0/dist/sweetalert2.all.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.11.0/dist/sweetalert2.min.css">
+
+    <title>Quiz|Lengend Guitar</title>
+</head>
+
+<body>
+    <div class="div_mae"></div>
+    <header>
+        <div class="div_logo">
+            <img src="logos\logo.png">
+        </div>
+        <nav>
+            <div class="hover_button">
+                <a href="index.html">Sair</a>
+            </div>
+
+            <div class="hover_button">
+                <a href="dashboard.html">dashboard</a>
+            </div>
+            
+            <div class="hover_button" class="ativo">
+                <a href="#">Quiz</a>
+            </div>
+        </nav>
+    </header>
+    <div class="centro">
+        <div class="titulo">
+            <h1>Legend Guitar</h1>
+        </div>
+
+        <div class="content">
+            <span class="qtd" id="qtd"></span>
+            <div class="questao" id="questao"></div>
+            <div id="options" class="options"></div>
+            <div class="correto" id="correto"></div>
+            <div class="fim" id="fim"></div>
+            <div id="avaliacao" class="avaliacao">
+                <div class="radio-input">
+                    <input
+                      class="star s1"
+                      type="radio"
+                      onclick="avaliar(5)"
+                      name="value-radio"
+                      value="value-1"
+                    />
+                    <input
+                      class="star s2"
+                      type="radio"
+                      onclick="avaliar(4)"
+                      name="value-radio"
+                      value="value-2"
+                    />
+                    <input
+                      class="star s3"
+                      type="radio"
+                      onclick="avaliar(3)"
+                      name="value-radio"
+                      value="value-3"
+                    />
+                    <input
+                      class="star s4"
+                      type="radio"
+                      onclick="avaliar(2)"
+                      name="value-radio"
+                      value="value-4"
+                    />
+                    <input
+                      class="star s5"
+                      type="radio"
+                      onclick="avaliar(1)"
+                      name="value-radio"
+                      value="value-5"
+                    />
+                  </div>
+                  
+            
+            </div>
+            
+            <button class="reiniciar" onclick="iniciarQuiz()">Reiniciar</button><br>
+            <a href="dashboard.html"><button class="reiniciar" id="dashboard">Dashboard</button></a>
+          </div>
+    </div>
+
+</body>
+
+</html>
+<script src="script_quiz.js"></script>
