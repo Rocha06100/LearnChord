@@ -37,7 +37,7 @@ Um projeto totalmente focado na historia da gitarra, um instrumento de extrema i
 
 ### Para a configuração do banco de dados:
 
-- Execute todo esse <a href="site/API/public/src/database/script_sql.sql">script</a> para a configuração do banco de dados.
+- Execute todo esse <a href="site/API/public/src/database/script-tabelas.sql">script</a> para a configuração do banco de dados.
 
 ### Instale as dependências do projeto:
 ```bash
