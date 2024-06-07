@@ -18,14 +18,13 @@ function autenticar(req, res) {
                     console.log(`Resultados: ${JSON.stringify(resultadoAutenticar)}`); // transforma JSON em String
 
                     if (resultadoAutenticar.length == 1) {
-                        usuario = resultadoAutenticar[0].idUsuario
                         console.log(resultadoAutenticar);
 
                         res.json({
                             idUsuario: resultadoAutenticar[0].idUsuario,
                             email: resultadoAutenticar[0].email,
                             nome: resultadoAutenticar[0].nome,
-                            senha: resultadoAutenticar[0].senha,
+                            senha: resultadoAutenticar[0].senha
 
                         });
 
@@ -153,7 +152,7 @@ function capturarEstrelas(req, res) {
     usuarioModel.capturarEstrelas()
         .then(function (resultado) {
             res.status(200).json(resultado);
-        }).catch(function (erro){
+        }).catch(function (erro) {
             res.status(500).json(erro.sqlMessage);
         });
 }

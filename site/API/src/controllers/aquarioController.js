@@ -17,6 +17,78 @@ function buscarAquariosPorEmpresa(req, res) {
 }
 
 
+function buscarTentativas(req, res) {
+  var idUsuario = req.params.idUsuario;
+
+  if (idUsuario == undefined) {
+    res.status(400).send("descricao está undefined!");
+  } else {
+
+
+    aquarioModel.buscarTentativas(idUsuario)
+      .then((resultado) => {
+        res.status(201).json(resultado);
+      }
+      ).catch((erro) => {
+        console.log(erro);
+        console.log(
+          "\nHouve um erro ao realizar o cadastro! Erro: ",
+          erro.sqlMessage
+        );
+        res.status(500).json(erro.sqlMessage);
+      });
+  }
+}
+
+
+function buscarSomaPontuacao(req, res) {
+  var idUsuario = req.params.idUsuario;
+
+  if (idUsuario == undefined) {
+    res.status(400).send("descricao está undefined!");
+  } else {
+
+
+    aquarioModel.buscarSomaPontuacao(idUsuario)
+      .then((resultado) => {
+        res.status(201).json(resultado);
+      }
+      ).catch((erro) => {
+        console.log(erro);
+        console.log(
+          "\nHouve um erro ao realizar o cadastro! Erro: ",
+          erro.sqlMessage
+        );
+        res.status(500).json(erro.sqlMessage);
+      });
+  }
+}
+
+
+function buscarMediaPontuacao(req, res) {
+  var idUsuario = req.params.idUsuario;
+
+  if (idUsuario == undefined) {
+    res.status(400).send("descricao está undefined!");
+  } else {
+
+
+    aquarioModel.buscarMediaPontuacao(idUsuario)
+      .then((resultado) => {
+        res.status(201).json(resultado);
+      }
+      ).catch((erro) => {
+        console.log(erro);
+        console.log(
+          "\nHouve um erro ao realizar o cadastro! Erro: ",
+          erro.sqlMessage
+        );
+        res.status(500).json(erro.sqlMessage);
+      });
+  }
+}
+
+
 function cadastrar(req, res) {
   var descricao = req.body.descricao;
   var idUsuario = req.body.idUsuario;
@@ -45,5 +117,8 @@ function cadastrar(req, res) {
 
 module.exports = {
   buscarAquariosPorEmpresa,
+  buscarSomaPontuacao,
+  buscarMediaPontuacao,
+  buscarTentativas,
   cadastrar
 }

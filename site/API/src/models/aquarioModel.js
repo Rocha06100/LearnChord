@@ -1,8 +1,39 @@
+
+
 var database = require("../database/config");
 
-function buscarAquariosPorEmpresa(empresaId) {
+function buscarAquariosPorEmpresa(idUsuario) {
 
-  var instrucaoSql = `SELECT * FROM aquario a WHERE fk_empresa = ${empresaId}`;
+  var instrucaoSql = `select sum(qtdFacil) as facil, sum(qtdMedio) as medio, sum(qtdDificil) as dificil from metricas
+	where fkUsuario = ${idUsuario}
+    group by(fkUsuario);`
+
+  console.log("Executando a instrução SQL: \n" + instrucaoSql);
+  return database.executar(instrucaoSql);
+}
+
+function buscarTentativas(idUsuario) {
+
+  var instrucaoSql = `select count(*) as tentativas from metricas
+  where fkUsuario = ${idUsuario};`
+
+  console.log("Executando a instrução SQL: \n" + instrucaoSql);
+  return database.executar(instrucaoSql);
+}
+
+function buscarSomaPontuacao(idUsuario) {
+
+    var instrucaoSql = `select sum(pontuacao) as soma from metricas
+    where fkUsuario = ${idUsuario};`
+  
+    console.log("Executando a instrução SQL: \n" + instrucaoSql);
+    return database.executar(instrucaoSql);
+}
+
+function buscarMediaPontuacao(idUsuario) {
+
+  var instrucaoSql = `select round(avg(pontuacao), 2) as media from metricas
+  where fkUsuario = ${idUsuario};`
 
   console.log("Executando a instrução SQL: \n" + instrucaoSql);
   return database.executar(instrucaoSql);
@@ -19,5 +50,8 @@ function cadastrar(empresaId, descricao) {
 
 module.exports = {
   buscarAquariosPorEmpresa,
+  buscarTentativas,
+  buscarSomaPontuacao,
+  buscarMediaPontuacao,
   cadastrar
 }
