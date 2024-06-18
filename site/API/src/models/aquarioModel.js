@@ -32,7 +32,7 @@ function buscarSomaPontuacao(idUsuario) {
 
 function buscarMediaPontuacao(idUsuario) {
 
-  var instrucaoSql = `select round(avg(pontuacao), 2) as media from metricas
+  var instrucaoSql = `select avg(pontuacao) as media from metricas
   where fkUsuario = ${idUsuario};`
 
   console.log("Executando a instrução SQL: \n" + instrucaoSql);

@@ -1,66 +1,90 @@
 const quizData = [
     // fáceis
     {
-        question: "Quantas cordas uma guitarra padrão possui?",
+        questao: "Quantas cordas uma guitarra padrão possui?",
         opcoes: ["4", "5", "6", "7"],
-        answer: 2,
-        difficulty: 'facil'
+        correto: 2,
+        dificuldade: 'facil'
     },
     {
-        question: "Qual dos seguintes é um famoso modelo de guitarra da Fender?",
+        questao: "Qual dos seguintes é um famoso modelo de guitarra da Fender?",
         opcoes: ["Stratocaster", "Les Paul", "SG", "Flying V"],
-        answer: 0,
-        difficulty: 'facil'
+        correto: 0,
+        dificuldade: 'facil'
+    },
+    {
+        questao: "Qual dessas opções é uma parte da guitarra?",
+        opcoes: ["culaça", "parafuso", "headstock", "tudel"],
+        correto: 2,
+        dificuldade: 'facil'
+    },
+    {
+        questao: "Qual dessas opções é uma técnica de tocar guitarra?",
+        opcoes: ["Martelar", "Pull Off", "polirritmia", "Pizzicato"],
+        correto: 1,
+        dificuldade: 'facil'
     },
     // // Médios
     {
-        question: "Qual é a madeira frequentemente usada para fazer o braço de guitarras Fender?",
+        questao: "Qual é a madeira frequentemente usada para fazer o braço de guitarras Fender?",
         opcoes: ["Mogno", "Maple", "Rosewood", "Basswood"],
-        answer: 0,
-        difficulty: 'medio'
+        correto: 0,
+        dificuldade: 'medio'
     },
     {
-        question: "Qual dos seguintes guitarristas é conhecido por tocar com os dentes?",
+        questao: "Qual dos seguintes guitarristas é conhecido por tocar com os dentes?",
         opcoes: ["Jimmy Page", "Jimi Hendrix", "Steve Vai", "Eric Clapton"],
-        answer: 1,
-        difficulty: 'medio'
+        correto: 1,
+        dificuldade: 'medio'
+    },
+    {
+        questao: "Qual é a função do captador em uma guitarra elétrica?",
+        opcoes: ["Ajustar a altura das cordas", "Afinar as cordas automaticamente", "Amplificar o som das cordas", "Mudar a tonalidade do instrumento"],
+        correto: 2,
+        dificuldade: 'medio'
     },
     // // difíceis
     {
-        question: "Qual guitarrista é conhecido por sua técnica de 'hybrid picking'?",
+        questao: "Qual guitarrista é conhecido por sua técnica de 'hybrid picking'?",
         opcoes: ["Brent Mason", "John Petrucci", "David Gilmour", "Jimmy Page"],
-        answer: 0,
-        difficulty: 'dificil'
+        correto: 0,
+        dificuldade: 'dificil'
     },
     {
-        question: "Qual é o nome do guitarrista da banda Megadeth?",
+        questao: "Qual é o nome do guitarrista da banda Megadeth?",
         opcoes: ["Dave Mustaine", "James Hetfield", "Kerry King", "Dimebag Darrell"],
-        answer: 0,
-        difficulty: 'dificil'
+        correto: 0,
+        dificuldade: 'dificil'
+    },
+    {
+        questao: 'Qual desses guitarristas é conhecido por popularizar o estilo de tocar com "fingerpicking"?',
+        opcoes: ["Rudolf Schenker", "David Guilmour", "Kurt Cobain", "Mark Knopfler"],
+        correto: 3,
+        dificuldade: 'dificil'
     }
 ];
 
-let idUsuario = sessionStorage.ID_USUARIO;
+let idUsuario = sessionStorage.ID_USUARIO
 
-const qtdElement = document.getElementById('qtd');
-const questaoElement = document.getElementById('questao');
-const optionsElement = document.getElementById('options');
-const corretoElement = document.getElementById('correto');
-const fimElement = document.getElementById('fim');
-const reiniciarButton = document.querySelector('.reiniciar');
-const dashboardButton = document.getElementById('dashboard');
-const avaliacao = document.querySelector('.avaliacao');
+const qtdElement = document.getElementById('qtd')
+const questaoElement = document.getElementById('questao')
+const optionsElement = document.getElementById('options')
+const corretoElement = document.getElementById('correto')
+const fimElement = document.getElementById('fim')
+const reiniciarButton = document.querySelector('.reiniciar')
+const dashboardButton = document.getElementById('dashboard')
+const avaliacao = document.querySelector('.avaliacao')
 
-let currentQuestion = 0;
-let score = 0;
+let questaoAtual = 0
+let score = 0
 
 function mostrarQuestao() {
-    const question = quizData[currentQuestion];
+    const questao = quizData[questaoAtual];
     avaliacao.style.display = 'none'
-    qtdElement.textContent = `Pergunta ${currentQuestion + 1} de ${quizData.length}`;
-    questaoElement.textContent = question.question;
+    qtdElement.textContent = `Pergunta ${questaoAtual + 1} de ${quizData.length}`;
+    questaoElement.textContent = questao.questao;
     optionsElement.innerHTML = '';
-    question.opcoes.forEach((option, index) => {
+    questao.opcoes.forEach((option, index) => {
         const button = document.createElement('button');
         button.textContent = option;
         button.addEventListener('click', () => verificarResposta(index));
@@ -73,13 +97,13 @@ let contMedio = 0
 let contDificil = 0
 
 function verificarResposta(optionIndex) {
-    const question = quizData[currentQuestion];
-    const correctAnswerIndex = question.answer;
-    if (optionIndex === correctAnswerIndex) {
+    const questao = quizData[questaoAtual];
+    const correctcorretoIndex = questao.correto;
+    if (optionIndex === correctcorretoIndex) {
         let pontos = 0;
-        switch (question.difficulty) {
+        switch (questao.dificuldade) {
             case 'facil':
-                pontos = 1;
+                pontos = 3;
                 contFacil++
                 break;
             case 'medio':
@@ -98,8 +122,8 @@ function verificarResposta(optionIndex) {
     } else {
         corretoElement.textContent = "Incorreto!";
     }
-    currentQuestion++;
-    if (currentQuestion < quizData.length) {
+    questaoAtual++;
+    if (questaoAtual < quizData.length) {
         mostrarQuestao();
     } else {
         mostrarResultado();
@@ -110,9 +134,11 @@ function verificarResposta(optionIndex) {
 
 function mostrarResultado() {
     fimElement.textContent = ``;
+    qtdElement.style.display = `none`
+    questaoElement.textContent = `Você fez ${score} pontos!`
     optionsElement.style.display = 'none';
     corretoElement.style.display = 'none';
-    fimElement.textContent += `Você fez ${score} pontos!`;
+    fimElement.textContent += `Avalie sua experiência`;
     avaliacao.style.display = 'block'
 
     fimElement.style.display = 'block';
@@ -224,7 +250,7 @@ function iniciarQuiz() {
     contFacil = 0
     contMedio = 0
     contDificil = 0
-    currentQuestion = 0;
+    questaoAtual = 0;
     score = 0;
     optionsElement.style.display = 'block';
     corretoElement.style.display = 'block';

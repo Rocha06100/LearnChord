@@ -146,7 +146,8 @@
         }).then(function (resposta) {
             console.log(resposta)
             resposta.json().then((json) => {
-                text_media.innerHTML = json[0].media
+                let mediaPontuacao = Number(json[0].media)
+                text_media.innerHTML = mediaPontuacao.toFixed(1)
                 buscarSoma()
             })
         }).catch(function (error) {

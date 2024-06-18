@@ -21,6 +21,6 @@ router.get(`/buscarMediaPontuacao/:idUsuario`, function (req, res) {
 
 router.post("/aquario", function (req, res) {
   aquarioController.cadastrar(req, res);
-})
+}) 
 
 module.exports = router;

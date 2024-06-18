@@ -283,3 +283,11 @@ footer {
 .social_icon:hover {
     transform: scale(1.2);
 }
+
+.fonte{
+    text-decoration: none;
+}
+
+.txt_contato{
+    color: #fff;
+}

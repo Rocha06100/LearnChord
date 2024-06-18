@@ -28,7 +28,7 @@ function cadastrarMetricas(usuario, pontuacao, contFacil, contMedio, contDificil
     // Insira exatamente a query do banco aqui, lembrando da nomenclatura exata nos valores
     //  e na ordem de inserção dos dados.
     var instrucaoSql = `
-        INSERT INTO Metricas (fkUsuario, pontuacao, qtdFacil, qtdMedio, qtdDificil) VALUES ('${usuario}', '${pontuacao}', '${contFacil}', '${contMedio}', '${contDificil}');
+        INSERT INTO metricas (fkUsuario, pontuacao, qtdFacil, qtdMedio, qtdDificil) VALUES ('${usuario}', '${pontuacao}', '${contFacil}', '${contMedio}', '${contDificil}');
     `;
     console.log("Executando a instrução SQL: \n" + instrucaoSql);
     return database.executar(instrucaoSql);
@@ -40,7 +40,7 @@ function cadastrarAvaliacao(usuario, avaliacao) {
     // Insira exatamente a query do banco aqui, lembrando da nomenclatura exata nos valores
     //  e na ordem de inserção dos dados.
     var instrucaoSql = `
-        INSERT INTO Avaliacao (fkUsuario, avaliacao) VALUES ('${usuario}', '${avaliacao}');
+        INSERT INTO avaliacao (fkUsuario, avaliacao) VALUES ('${usuario}', '${avaliacao}');
     `;
     console.log("Executando a instrução SQL: \n" + instrucaoSql);
     return database.executar(instrucaoSql);
@@ -48,11 +48,11 @@ function cadastrarAvaliacao(usuario, avaliacao) {
 
 function capturarEstrelas() {
     const instrucaoSql = `SELECT COUNT(idAvaliacao) AS star5, 
-    (SELECT COUNT(idAvaliacao) FROM Avaliacao WHERE estrelas = 4) AS star4, 
-    (SELECT COUNT(idAvaliacao) FROM Avaliacao WHERE estrelas = 3) AS star3, 
-    (SELECT COUNT(idAvaliacao) FROM Avaliacao WHERE estrelas = 2) AS star2, 
-    (SELECT COUNT(idAvaliacao) FROM Avaliacao WHERE estrelas = 1) AS star1 
-    FROM Avaliacao WHERE estrelas = 5;`;
+    (SELECT COUNT(idAvaliacao) FROM avaliacao WHERE estrelas = 4) AS star4, 
+    (SELECT COUNT(idAvaliacao) FROM avaliacao WHERE estrelas = 3) AS star3, 
+    (SELECT COUNT(idAvaliacao) FROM avaliacao WHERE estrelas = 2) AS star2, 
+    (SELECT COUNT(idAvaliacao) FROM avaliacao WHERE estrelas = 1) AS star1 
+    FROM avaliacao WHERE estrelas = 5;`;
 
     console.log("Executando a instrução SQL: \n" + instrucaoSql);
     return database.executar(instrucaoSql);
